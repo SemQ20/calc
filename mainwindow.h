@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <math_functions.h>
+#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,7 +18,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_27_clicked();
+    void on_Math_clicked();
+    void on_Logic_clicked();
+    void receiveDataFromForm(QString str);
 
 private:
     Ui::MainWindow *ui;

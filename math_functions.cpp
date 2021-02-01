@@ -18,3 +18,8 @@ void math_functions::on_pushButton_clicked(){
     this->close();
     emit main_window_show();
 }
+
+void math_functions::on_pushButton_2_clicked(){
+    emit sendData("test");
+    this->close();
+}
