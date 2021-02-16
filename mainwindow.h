@@ -16,11 +16,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 private slots:
     void on_Math_clicked();
     void on_Logic_clicked();
     void receiveDataFromForm(QString str);
+    void changed_text_from_line_edit(QString str);
+signals:
 
 private:
     Ui::MainWindow *ui;
