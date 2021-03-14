@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <math_functions.h>
 #include <QString>
+#include <string>
+#include <cmath>
+#include <type_traits>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,11 +19,28 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool check_line_edit_param(QCharRef);
 private slots:
     void on_Math_clicked();
     void on_Logic_clicked();
     void receiveDataFromForm(QString str);
-    void changed_text_from_line_edit(QString str);
+    void changed_text_from_line_edit(const QString&);
+    void on_Mhz_freq_btn_clicked();
+    void on_clear_btn_clicked();
+    void on_backspace_clicked();
+    void on_btn_number_1_clicked();
+    void on_btn_number_2_clicked();
+    void on_btn_number_3_clicked();
+    void on_btn_number_4_clicked();
+    void on_btn_number_5_clicked();
+    void on_btn_number_6_clicked();
+    void on_btn_number_7_clicked();
+    void on_btn_number_8_clicked();
+    void on_btn_number_9_clicked();
+    void on_btn_number_0_clicked();
+    void on_point_btn_clicked();
+    void on_pos_neg_btn_clicked();
+
 signals:
 
 private:
