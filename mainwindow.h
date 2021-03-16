@@ -11,6 +11,15 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+// constants
+
+constexpr const double milli        = 1.0/1000;
+constexpr const double micro        = 1.0/1000000;
+constexpr const double nano         = 1.0/1000000000;
+constexpr const double pico         = 1.0/1000000000000;
+constexpr const int    mil          = 1000000;
+constexpr const int    thousand     = 1000;
+constexpr const int    handred      = 100;
 
 class MainWindow : public QMainWindow
 {
@@ -40,7 +49,7 @@ private slots:
     void on_btn_number_0_clicked();
     void on_point_btn_clicked();
     void on_pos_neg_btn_clicked();
-
+    void ns_measure();
 signals:
 
 private:

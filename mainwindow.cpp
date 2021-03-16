@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QtDebug>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(form, &math_functions::main_window_show, this, &MainWindow::show);
     connect(form, &math_functions::sendData, this, &MainWindow::receiveDataFromForm);
     connect(ui->lineEdit, &QLineEdit::textChanged, this, &MainWindow::changed_text_from_line_edit);
+    connect(ui->ns_btn, &QPushButton::clicked, this, &MainWindow::ns_measure);
 }
 
 
@@ -55,8 +56,12 @@ bool MainWindow::check_line_edit_param(QCharRef str){
 
 void MainWindow::on_Mhz_freq_btn_clicked()
 {
-   float freq = 1/ ui->lineEdit->text().toFloat();
-   ui->lineEdit->setText(QString::fromStdString(std::to_string(freq)));
+    float freq;
+    if(ui->lineEdit->text().toDouble() >= nano && ui->lineEdit->text().toDouble() <= micro){ // period
+        freq = 1/ui->lineEdit->text().toDouble();
+        ui->lineEdit->setText(QString::number(freq,'f',2));
+        ui->result_cache->setText(QString::number(freq/mil) + "MHz");
+    }
 }
 
 void MainWindow::on_clear_btn_clicked()
@@ -142,4 +147,14 @@ void MainWindow::on_pos_neg_btn_clicked()
     }
 }
 
-
+void MainWindow::ns_measure(){
+    double int_num = ui->lineEdit->text().toDouble();
+    double float_num = 0;
+    int nanos;
+    if(ui->lineEdit->text().toInt() > 0){
+        float_num = int_num * nano;
+        nanos     = float_num / nano;
+        ui->lineEdit->setText(QString::number(float_num, 'f', 9));
+        ui->result_cache->setText(QString::number(nanos) + " ns");
+    }
+}
